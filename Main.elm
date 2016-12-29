@@ -59,14 +59,14 @@ collide model =
     (speed_x, speed_y) = model.speed
     dx = (0.5 - 0.46 + 0.02)
   in
-    if ball_x < dx
-      && (model.player1 + 0.2 <= ball_y && ball_y >= model.player1 - 0.2) -- ball hit player1
+    if ball_x <= dx
+      && (ball_y - 0.5 <= model.player1 + 0.1 && ball_y - 0.5 >= model.player1 - 0.1) -- ball hit player1
     then
       { model
       | speed = (-1 * speed_x, speed_y)
       , ball = (dx, ball_y) }
-    else if ball_x > 1 - dx
-      && (model.player2 + 0.2 <= ball_y && ball_y >= model.player2 - 0.2) -- ball hit player2
+    else if ball_x >= 1 - dx
+      && (ball_y - 0.5 <= model.player2 + 0.1 && ball_y - 0.5 >= model.player2 - 0.1) -- ball hit player2
     then
       { model
       | speed = (-1 * speed_x, speed_y)
